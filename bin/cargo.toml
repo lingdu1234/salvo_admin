@@ -1,0 +1,22 @@
+[package]
+name = "salvo-admin"
+default-run = "salvo-admin"
+edition.workspace = true
+publish.workspace = true
+version.workspace = true
+
+[dependencies]
+# crate
+apis = {path = "../app/apis"}
+middleware-fn = {path = "../app/middleware-fn"}
+service = {path = "../app/service"}
+configs = {path = "../configs"}
+utils = {path = "../utils"}
+
+# 依赖
+salvo = {workspace = true, features = ["quinn", "logging", "serve-static","cors","compression"]}
+tokio = {workspace = true, features = ["macros", "signal"]}
+#日志
+tracing = {workspace = true}
+tracing-appender = {workspace = true}
+tracing-subscriber = {workspace = true, features = ["json", "env-filter", "local-time", "registry"]}

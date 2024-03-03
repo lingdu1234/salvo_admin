@@ -1,0 +1,10 @@
+/target
+/data/_upload
+/data/_web
+/data/cert
+/data/log
+/data/config/config.toml
+/data/user_agent/ip2region.xdb
+/migration/data/m20220101_000002_create_table
+cmd.txt
+*.exe

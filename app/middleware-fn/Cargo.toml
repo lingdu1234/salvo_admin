@@ -1,0 +1,33 @@
+[package]
+name = "middleware-fn"
+edition.workspace = true
+publish.workspace = true
+version.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+configs = {path = "../../configs"}
+utils = {path = "../../utils"}
+service = {path = "../service"}
+db = {path = "../../db"}
+# 依赖
+salvo = {workspace = true}
+salvo_core = {workspace = true}
+# 序列化
+serde = {workspace = true}
+serde_json = {workspace = true}
+# JWT
+jsonwebtoken = {workspace = true}
+
+# SCUR128
+scru128  = {workspace = true}
+# time
+chrono = {workspace = true}
+# Once_cell
+once_cell = {workspace = true}
+
+# 日志
+tracing = {workspace = true}
+tokio = {workspace = true}
+anyhow = {workspace = true}

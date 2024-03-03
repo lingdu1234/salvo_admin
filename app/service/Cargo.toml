@@ -1,0 +1,54 @@
+[package]
+name = "service"
+edition.workspace = true
+publish.workspace = true
+version.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+#依赖
+db = {path = "../../db"}
+utils = {path = "../../utils"}
+configs = {path = "../../configs"}
+#
+# tokio
+tokio = {workspace = true}
+# salvo
+salvo_core = {workspace = true}
+#
+math_captcha = {workspace = true}
+# 错误处理
+anyhow = {workspace = true}
+# 时间处理
+chrono = {workspace = true}
+# uuid
+scru128 = {workspace = true}
+# 系统信息
+sysinfo = {workspace = true}
+
+headers = {workspace = true}
+
+jsonwebtoken = {workspace = true}
+
+once_cell = {workspace = true}
+
+tracing = {workspace = true}
+
+user-agent-parser = {workspace = true}
+#reqwest = {workspace = true}
+serde_json = {workspace = true}
+serde = {workspace = true}
+# 计划任务
+delay_timer = {workspace = true}
+
+# sea-orm
+sea-orm = {workspace = true, features = ["macros", "runtime-tokio-native-tls", "debug-print"]}
+#IP查询数据库
+xdb = { git = "https://github.com/lionsoul2014/ip2region.git", branch = "master" }
+
+[features]
+default = ["mysql"]
+mysql = ["sea-orm/sqlx-mysql"]
+postgres = ["sea-orm/sqlx-postgres"]
+sqlite = ["sea-orm/sqlx-sqlite"]

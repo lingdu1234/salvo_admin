@@ -1,0 +1,29 @@
+[package]
+name = "db"
+edition.workspace = true
+publish.workspace = true
+version.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+#
+configs = {path = "../configs"}
+
+#
+chrono = {workspace = true, features = ["serde"]}
+once_cell = {workspace = true}
+serde = {workspace = true,features = ["derive"]}
+# serde_json = {workspace = true}
+tokio = {workspace = true,features=["parking_lot"]}
+tracing = {workspace = true}
+
+
+# sea-orm
+sea-orm = {workspace = true,features = ["macros", "runtime-tokio-native-tls","with-chrono"]}
+
+[features]
+default = ["postgres", "mysql", "sqlite"]
+mysql = ["sea-orm/sqlx-mysql"]
+postgres = ["sea-orm/sqlx-postgres"]
+sqlite = ["sea-orm/sqlx-sqlite"]

@@ -1,0 +1,30 @@
+[package]
+name = "utils"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+configs = {path = "../configs"}
+
+
+
+# 
+once_cell ={workspace = true}
+# 
+tokio = {workspace = true}
+
+#
+# anyhow = {workspace = true}
+
+# #  随机数
+md5 = {workspace = true}
+rand = {workspace = true}
+
+# log
+tracing = {workspace = true}
+tracing-subscriber = {workspace = true, features = ["json", "env-filter", "local-time", "registry"]}
+tracing-appender = {workspace = true}
+time = {workspace = true}

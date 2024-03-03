@@ -1,0 +1,29 @@
+[package]
+edition.workspace = true
+name = "apis"
+publish.workspace = true
+version.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+configs = {path = "../../configs"}
+db = {path = "../../db"}
+middleware-fn = {path = "../middleware-fn"}
+service = {path = "../service"}
+# 依赖
+futures-util = {workspace = true}
+salvo = {workspace = true, features = ["sse", "anyhow"]}
+salvo_core = {workspace = true}
+tokio = {workspace = true, features = ["macros"]}
+tokio-stream = {workspace = true, features = ["net"]}
+# 序列化
+serde = {workspace = true}
+serde_json = {workspace = true}
+
+# 错误处理
+
+anyhow = {workspace = true}
+
+# 验证码
+math_captcha = {workspace = true}
