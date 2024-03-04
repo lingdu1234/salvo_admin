@@ -2,8 +2,6 @@ use configs::CFG;
 use middleware_fn::{api_auth, ctx, jwt_auth, operation_log};
 use salvo::{prelude::StaticDir, Router};
 
-pub mod utils;
-
 pub mod common;
 pub mod system;
 
@@ -39,11 +37,8 @@ pub fn auth_api() -> Router {
     Router::with_hoop_when(operation_log::operation_log_fn, |_, _| {
         CFG.log.enable_oper_log
     })
-    .push(
-        Router::with_path("system")
-            .hoop(jwt_auth::jwt_auth_fn) //JWT认证
-            .hoop(ctx::ctx_fn) //添加请求上下文中间件
-            .hoop(api_auth::api_auth_fn) //Api认证
-            .push(system::system_api()),
-    )
+    .hoop(jwt_auth::jwt_auth_fn) //JWT认证
+    .hoop(ctx::ctx_fn) //添加请求上下文中间件
+    .hoop(api_auth::api_auth_fn) //Api认证
+    .push(Router::with_path("system").push(system::system_api())) //系统api
 }

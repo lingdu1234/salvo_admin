@@ -97,7 +97,6 @@ fn get_city_by_ip2(ip: &str) -> ClientNetInfo {
 }
 
 pub fn set_xdb() {
-    let xdb = &CFG.system.ip2region;
-    searcher_init(Some(xdb.to_owned()));
+    searcher_init(Some(CFG.system.ip_to_region.to_owned()));
     tracing::info!("ip查询数据库初始化完成");
 }

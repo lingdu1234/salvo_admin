@@ -16,10 +16,8 @@ pub struct PageParams {
 }
 
 #[derive(Deserialize, Clone, Debug, Serialize, Default)]
-pub struct ErrorResp {
-    pub ____code: u16,
-    pub name: String,
-    pub brief: String,
-    pub detail: String,
-    pub cause: String,
+pub struct ResErr {
+    pub code: Option<i32>,
+    pub data: Option<String>,
+    pub msg: Option<String>,
 }

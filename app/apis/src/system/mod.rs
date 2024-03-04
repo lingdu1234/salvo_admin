@@ -151,4 +151,9 @@ pub fn system_api() -> Router {
                 .push(Router::with_path("delete").delete(api::sys_update_log::delete)) // 硬删除
                 .push(Router::with_path("get_all").get(api::sys_update_log::get_all)), // 获取全部
         )
+        .push(
+            Router::with_path("sse")
+                .push(Router::with_path("delete").delete(common::delete_sse_msg))
+                .push(Router::with_path("get").get(common::get_sse_msg)),
+        )
 }

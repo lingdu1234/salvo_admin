@@ -10,15 +10,12 @@ use db::{
     },
     DB,
 };
+use middleware_fn::user_utils::get_current_user;
 use salvo::{Depot, Request};
 use service::system;
 
-use crate::utils::user_utils::get_current_user;
-
 /// get_list 获取列表
 /// page_params 分页参数
-/// db 数据库连接 使用db.0
-
 pub async fn get_sort_list(request: &mut Request) -> Result<ListData<SysDeptModel>> {
     let page_params = request.parse_queries::<PageParams>()?;
     let req = request.parse_queries::<SysDeptSearchReq>()?;

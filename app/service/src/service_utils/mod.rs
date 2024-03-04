@@ -1,6 +1,7 @@
 pub mod api_utils;
 pub mod web_utils;
 
+pub mod data_scope;
 pub mod jwt;
 
 /// 重新导出

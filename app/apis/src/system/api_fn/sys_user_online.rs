@@ -8,10 +8,9 @@ use db::{
     },
     DB,
 };
+use middleware_fn::user_utils::get_current_user;
 use salvo::{Depot, Request};
 use service::system;
-
-use crate::utils::user_utils::get_current_user;
 
 /// get_list 获取列表
 /// page_params 分页参数

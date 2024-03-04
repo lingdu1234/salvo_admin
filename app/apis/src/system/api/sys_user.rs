@@ -2,9 +2,10 @@ use db::{
     common::{jwt::AuthBody, res::ListData},
     system::models::sys_user::{UserInfo, UserInformation, UserWithDept},
 };
+use middleware_fn::res_util::Res;
 use salvo::{handler, Depot, Request};
 
-use crate::{system::api_fn, utils::res_util::Res};
+use crate::system::api_fn;
 
 /// get_user_list 获取用户列表
 /// page_params 分页参数

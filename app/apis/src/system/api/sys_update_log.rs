@@ -1,7 +1,8 @@
 use db::system::prelude::SysUpdateLogModel;
+use middleware_fn::res_util::Res;
 use salvo::{handler, Depot, Request};
 
-use crate::{system::api_fn, utils::res_util::Res};
+use crate::system::api_fn;
 
 /// add 添加
 #[handler]

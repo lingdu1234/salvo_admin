@@ -1,11 +1,13 @@
 use configs::CFG;
-use db::common::{ctx::ReqCtx, jwt::Claims};
+use db::common::{ctx::ReqCtx, jwt::Claims, res::ResErr};
 use salvo_core::{
     handler,
     http::{Request, Response, StatusError},
+    prelude::Json,
     Depot, FlowCtrl,
 };
 use service::service_utils::ApiUtils;
+use tracing::info;
 
 #[handler]
 pub async fn api_auth_fn(
@@ -34,19 +36,24 @@ pub async fn api_auth_fn(
                 {
                     ctrl.call_next(req, depot, res).await;
                 } else {
-                    res.render(
-                        StatusError::unauthorized().brief("this api is not authorized for you"),
-                    );
+                    info!("{:?}的{:?}权限验证未通过", &user.name, &req_ctx.path);
+                    let data = ResErr {
+                        data: None,
+                        code: Some(500),
+                        msg: Some("你的该操作未授权".to_string()),
+                    };
+                    depot.insert("res_v", serde_json::to_string(&data).unwrap_or_default());
+                    res.render(Json(data));
                     ctrl.skip_rest();
                 }
             } else {
-                // 验证失败
-                res.render(StatusError::unauthorized().brief("this api is not authorized for you"));
-                ctrl.skip_rest();
+                // 该api没有在权限库，默认通过
+                info!("{:?}没有在权限库默认通过", &req_ctx.path);
+                ctrl.call_next(req, depot, res).await;
             }
         }
     } else {
-        // 验证失败
+        // 验证失败,一般不大可能走到这里
         res.render(
             StatusError::unauthorized()
                 .brief("you need to login first or the api permission is set wrong"),

@@ -7,10 +7,9 @@ use db::{
     },
     DB,
 };
+use middleware_fn::user_utils::get_current_user;
 use salvo::{Depot, Request};
 use service::system;
-
-use crate::utils::user_utils::get_current_user;
 
 /// add 添加
 pub async fn add(depot: &mut Depot, request: &mut Request) -> Result<String> {

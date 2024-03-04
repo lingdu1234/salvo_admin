@@ -12,11 +12,10 @@ use db::{
     },
     DB,
 };
+use middleware_fn::user_utils::get_current_user;
 use salvo::{Depot, Request};
 use service::{common, system};
 use tokio::join;
-
-use crate::utils::user_utils::get_current_user;
 
 /// get_user_list 获取用户列表
 /// page_params 分页参数

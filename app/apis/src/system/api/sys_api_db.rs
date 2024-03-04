@@ -1,7 +1,8 @@
 use db::system::prelude::SysApiDbModel;
+use middleware_fn::res_util::Res;
 use salvo::{handler, Request};
 
-use crate::{system::api_fn, utils::res_util::Res};
+use crate::system::api_fn;
 
 /// add 添加
 #[handler]

@@ -12,10 +12,9 @@ use db::{
     },
     DB,
 };
+use middleware_fn::user_utils::get_current_user;
 use salvo::{Depot, Request};
 use service::system;
-
-use crate::utils::user_utils::get_current_user;
 
 /// get_all_menu_tree 获取全部菜单
 pub async fn get_sort_list(request: &mut Request) -> Result<ListData<SysMenuModel>> {

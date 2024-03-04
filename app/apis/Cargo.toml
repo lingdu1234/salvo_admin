@@ -13,7 +13,7 @@ middleware-fn = {path = "../middleware-fn"}
 service = {path = "../service"}
 # 依赖
 futures-util = {workspace = true}
-salvo = {workspace = true, features = ["sse", "anyhow"]}
+salvo = {workspace = true, features = ["sse", "anyhow","size-limiter"]}
 salvo_core = {workspace = true}
 tokio = {workspace = true, features = ["macros"]}
 tokio-stream = {workspace = true, features = ["net"]}

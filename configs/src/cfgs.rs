@@ -70,7 +70,7 @@ pub struct System {
     /// user agent 解析
     pub user_agent_parser: String,
     /// ip2region ip查询数据库
-    pub ip2region: String,
+    pub ip_to_region: String,
 }
 
 /// jwt 配置文件

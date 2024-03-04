@@ -2,9 +2,10 @@ use db::{
     common::res::ListData,
     system::{models::sys_role::SysRoleResp, prelude::SysRoleModel},
 };
+use middleware_fn::res_util::Res;
 use salvo::{handler, Depot, Request};
 
-use crate::{system::api_fn, utils::res_util::Res};
+use crate::system::api_fn;
 
 /// get_list 获取列表
 /// page_params 分页参数

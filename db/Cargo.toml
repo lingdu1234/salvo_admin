@@ -14,6 +14,7 @@ configs = {path = "../configs"}
 chrono = {workspace = true, features = ["serde"]}
 once_cell = {workspace = true}
 serde = {workspace = true,features = ["derive"]}
+serde_json = {workspace = true}
 # serde_json = {workspace = true}
 tokio = {workspace = true,features=["parking_lot"]}
 tracing = {workspace = true}
@@ -21,6 +22,7 @@ tracing = {workspace = true}
 
 # sea-orm
 sea-orm = {workspace = true,features = ["macros", "runtime-tokio-native-tls","with-chrono"]}
+
 
 [features]
 default = ["postgres", "mysql", "sqlite"]

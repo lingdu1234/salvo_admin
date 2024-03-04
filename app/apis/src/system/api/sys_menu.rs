@@ -5,9 +5,10 @@ use db::{
         prelude::SysMenuModel,
     },
 };
+use middleware_fn::res_util::Res;
 use salvo::{handler, Depot, Request};
 
-use crate::{system::api_fn, utils::res_util::Res};
+use crate::system::api_fn;
 /// get_all_menu_tree 获取全部菜单
 #[handler]
 pub async fn get_sort_list(request: &mut Request) -> Res<ListData<SysMenuModel>> {
