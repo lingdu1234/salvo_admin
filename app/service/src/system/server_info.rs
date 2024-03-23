@@ -45,7 +45,7 @@ pub fn get_oper_sys_info() -> SysInfo {
         });
     }
     let cpu = Cpu {
-        name: sys.global_cpu_info().brand().to_string(),
+        name: sys.cpus().get(0).unwrap().brand().to_string(),
         arch: std::env::consts::ARCH.to_string(),
         cores: sys
             .physical_core_count()
