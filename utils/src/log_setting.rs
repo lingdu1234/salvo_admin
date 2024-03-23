@@ -8,8 +8,9 @@ use tracing_subscriber::fmt::{
 use time::format_description::well_known::Rfc3339;
 #[cfg(target_os = "windows")]
 use tracing_subscriber::fmt::time::LocalTime;
-#[cfg(target_os = "windows")]
 
+
+#[cfg(target_os = "windows")]
 // 设置日志格式
 pub fn set_log_format() -> Format<Compact, LocalTime<Rfc3339>> {
     fmt::format()
@@ -21,7 +22,7 @@ pub fn set_log_format() -> Format<Compact, LocalTime<Rfc3339>> {
 }
 
 #[cfg(not(target_os = "windows"))]
-pub fn get_log_format() -> Format<Compact> {
+pub fn set_log_format() -> Format<Compact> {
     fmt::format().with_level(true).with_target(true).with_thread_ids(true).compact()
 }
 
